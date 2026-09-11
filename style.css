@@ -356,6 +356,114 @@ textarea {
   text-decoration: none;
 }
 
+/* ---------- HALAMAN BIO (link-in-bio) ---------- */
+.bio-main {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 56px 20px 0;
+  text-align: center;
+}
+
+.bio-main .logo {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 18px;
+  display: block;
+}
+
+.bio-main h1 {
+  font-size: 26px;
+}
+
+.bio-main .tagline {
+  font-size: 12.5px;
+  color: var(--teks-lembut);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+.bio-main .divider {
+  width: 40px;
+  height: 1px;
+  background: var(--emas);
+  margin: 22px auto;
+  opacity: 0.7;
+}
+
+.bio-main .statement {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--teks-lembut);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.bio-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 48px;
+}
+
+.bio-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 20px;
+  background: var(--putih);
+  border: 1px solid var(--garis);
+  border-radius: var(--radius);
+  text-decoration: none;
+}
+
+.bio-link:hover {
+  border-color: var(--emas);
+}
+
+.bio-link .t {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--hijau-tua);
+}
+
+.bio-link .s {
+  font-size: 11px;
+  color: var(--teks-lembut);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+/* ---------- HALAMAN TESTIMONI ---------- */
+.testi-card {
+  background: var(--putih);
+  border: 1px solid var(--garis);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 14px;
+}
+
+.testi-card .nama {
+  font-weight: 600;
+  color: var(--hijau-tua);
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+.testi-card .villa {
+  font-size: 12px;
+  color: var(--emas);
+  margin-bottom: 8px;
+}
+
+.testi-card .ulasan {
+  font-size: 13.5px;
+  color: var(--teks-lembut);
+  font-style: italic;
+}
+
 @media (max-width: 420px) {
   .field-row { flex-direction: column; gap: 0; }
   .header { padding: 38px 0 34px; }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Villa Haven — Link</title>
+<link rel="icon" href="logo.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="bio-main">
+  <img src="logo.png" alt="Villa Haven" class="logo">
+  <h1>Villa Haven</h1>
+  <p class="tagline">Indonesia's Aesthetic Villa Agens</p>
+  <div class="divider"></div>
+  <p class="statement">Sewa villa terpercaya di seluruh Indonesia — temukan tempat menginap impian Anda.</p>
+
+  <div class="bio-links">
+    <a href="index.html" class="bio-link">
+      <span class="t">🏡 Booking Sekarang</span>
+      <span class="s">Isi Form Booking</span>
+    </a>
+
+    <a href="#" id="linkWa" class="bio-link" target="_blank" rel="noopener noreferrer">
+      <span class="t">💬 Chat Admin</span>
+      <span class="s">WhatsApp</span>
+    </a>
+
+    <a href="#" id="linkIg" class="bio-link" target="_blank" rel="noopener noreferrer">
+      <span class="t">📸 Follow Kami</span>
+      <span class="s">Instagram</span>
+    </a>
+
+    <a href="testimoni.html" class="bio-link">
+      <span class="t">⭐ Kata Tamu Kami</span>
+      <span class="s">Testimoni &amp; Review</span>
+    </a>
+  </div>
+</main>
+
+<div id="global-footer"></div>
+
+<script src="config.js"></script>
+<script src="footer.js"></script>
+<script>
+  document.getElementById('linkWa').href =
+    'https://wa.me/' + CONFIG.nomorWhatsApp + '?text=' + encodeURIComponent('Halo Villa Haven, saya mau tanya-tanya dulu.');
+  document.getElementById('linkIg').href = 'https://instagram.com/' + CONFIG.instagramUsername;
+</script>
+
+</body>
+</html>
