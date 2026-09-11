@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Villa Haven — Booking Villa</title>
+<link rel="icon" href="logo.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap">
+    <img src="logo.svg" alt="Villa Haven" class="logo">
+    <h1>Villa Haven</h1>
+    <p>Sewa villa terpercaya di seluruh Indonesia</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <form class="card" id="formBooking" novalidate>
+
+    <div class="field">
+      <label for="nama">Nama Lengkap</label>
+      <input type="text" id="nama" name="nama" required>
+      <div class="error-msg">Nama wajib diisi.</div>
+    </div>
+
+    <div class="field">
+      <label for="whatsapp">Nomor WhatsApp</label>
+      <input type="tel" id="whatsapp" name="whatsapp" placeholder="Contoh: 081234567890" required>
+      <div class="error-msg">Nomor WhatsApp wajib diisi.</div>
+    </div>
+
+    <div class="field">
+      <label for="villa">Nama Villa <span class="hint">(sesuai postingan yang Anda lihat)</span></label>
+      <input type="text" id="villa" name="villa" required>
+      <div class="error-msg">Nama villa wajib diisi.</div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label for="checkin">Check-in</label>
+        <input type="date" id="checkin" name="checkin" required>
+      </div>
+      <div class="field">
+        <label for="checkout">Check-out</label>
+        <input type="date" id="checkout" name="checkout" required>
+      </div>
+    </div>
+    <div class="error-msg" id="errorTanggal">Tanggal check-out harus setelah check-in.</div>
+
+    <div class="field">
+      <label for="tamu">Jumlah Tamu</label>
+      <input type="number" id="tamu" name="tamu" min="1" value="2" required>
+    </div>
+
+    <div class="field">
+      <label for="catatan">Catatan <span class="hint">(opsional)</span></label>
+      <textarea id="catatan" name="catatan" placeholder="Contoh: request extra bed, late check-in, dsb."></textarea>
+    </div>
+
+    <button type="submit" class="btn">Booking Sekarang</button>
+  </form>
+</main>
+
+<footer class="footer wrap">
+  <div class="links">
+    <a href="#" id="linkPrivasi">Kebijakan Privasi</a>
+    <a href="#" id="linkSyarat">Syarat &amp; Ketentuan</a>
+  </div>
+  <p>&copy; <span id="tahun"></span> Villa Haven</p>
+
+  <div class="kebijakan" id="boxPrivasi">
+    <h4>Kebijakan Privasi</h4>
+    <p>Data yang Anda isi pada formulir ini (nama, nomor WhatsApp, dan detail booking) digunakan semata-mata untuk memproses permintaan sewa villa Anda dan menghubungi Anda terkait status booking. Kami tidak membagikan data Anda kepada pihak lain di luar keperluan proses booking dan koordinasi dengan pengelola villa terkait.</p>
+  </div>
+
+  <div class="kebijakan" id="boxSyarat">
+    <h4>Syarat &amp; Ketentuan</h4>
+    <p>Villa Haven bertindak sebagai perantara yang menghubungkan tamu dengan pemilik/pengelola villa. Booking dianggap sah setelah pembayaran DP diterima dan dikonfirmasi oleh admin. Kebijakan pembatalan, reschedule, dan refund mengikuti ketentuan yang diinformasikan admin saat konfirmasi booking. Harga dan ketersediaan villa dapat berubah sewaktu-waktu sebelum pembayaran DP dikonfirmasi.</p>
+  </div>
+</footer>
+
+<a href="#" class="wa-float" id="waFloat" title="Chat Admin">💬</a>
+
+<script src="config.js"></script>
+<script>
+  document.getElementById('tahun').textContent = new Date().getFullYear();
+
+  // Tombol chat admin mengambang
+  document.getElementById('waFloat').href =
+    'https://wa.me/' + CONFIG.nomorWhatsApp + '?text=' + encodeURIComponent('Halo Villa Haven, saya mau tanya-tanya dulu.');
+
+  // Toggle kebijakan privasi / syarat ketentuan
+  function toggleBox(linkId, boxId, other) {
+    document.getElementById(linkId).addEventListener('click', function (e) {
+      e.preventDefault();
+      document.getElementById(other).classList.remove('aktif');
+      document.getElementById(boxId).classList.toggle('aktif');
+    });
+  }
+  toggleBox('linkPrivasi', 'boxPrivasi', 'boxSyarat');
+  toggleBox('linkSyarat', 'boxSyarat', 'boxPrivasi');
+
+  // Validasi & submit form
+  const form = document.getElementById('formBooking');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    let valid = true;
+    document.querySelectorAll('.error-msg').forEach(el => el.style.display = 'none');
+
+    const nama = document.getElementById('nama').value.trim();
+    const wa = document.getElementById('whatsapp').value.trim();
+    const villa = document.getElementById('villa').value.trim();
+    const checkin = document.getElementById('checkin').value;
+    const checkout = document.getElementById('checkout').value;
+    const tamu = document.getElementById('tamu').value;
+    const catatan = document.getElementById('catatan').value.trim();
+
+    if (!nama) { showError('nama'); valid = false; }
+    if (!wa) { showError('whatsapp'); valid = false; }
+    if (!villa) { showError('villa'); valid = false; }
+    if (checkin && checkout && new Date(checkout) <= new Date(checkin)) {
+      document.getElementById('errorTanggal').style.display = 'block';
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    function showError(id) {
+      const field = document.getElementById(id);
+      field.closest('.field').querySelector('.error-msg').style.display = 'block';
+    }
+
+    // Buat nomor booking otomatis: BK-YYYYMMDD-HHMM
+    const now = new Date();
+    const pad = n => String(n).padStart(2, '0');
+    const noBooking = 'BK-' + now.getFullYear() + pad(now.getMonth()+1) + pad(now.getDate())
+      + '-' + pad(now.getHours()) + pad(now.getMinutes());
+
+    const data = { noBooking, nama, wa, villa, checkin, checkout, tamu, catatan };
+
+    // Kirim notifikasi Telegram (kalau token sudah diisi di config.js)
+    kirimNotifTelegram(data);
+
+    // Pindah ke halaman invoice, data dititipkan lewat URL
+    const params = new URLSearchParams(data).toString();
+    window.location.href = 'invoice.html?' + params;
+  });
+
+  function kirimNotifTelegram(data) {
+    if (!CONFIG.telegramBotToken || !CONFIG.telegramChatId) return; // dilewati kalau belum diisi
+
+    const pesan =
+      '🏡 *Booking Baru — Villa Haven*\n' +
+      'No: ' + data.noBooking + '\n' +
+      'Nama: ' + data.nama + '\n' +
+      'WA: ' + data.wa + '\n' +
+      'Villa: ' + data.villa + '\n' +
+      'Check-in: ' + data.checkin + '\n' +
+      'Check-out: ' + data.checkout + '\n' +
+      'Tamu: ' + data.tamu + '\n' +
+      'Catatan: ' + (data.catatan || '-');
+
+    fetch('https://api.telegram.org/bot' + CONFIG.telegramBotToken + '/sendMessage', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: CONFIG.telegramChatId,
+        text: pesan,
+        parse_mode: 'Markdown'
+      })
+    }).catch(() => { /* diamkan kalau gagal, tidak boleh menghambat proses booking */ });
+  }
+</script>
+
+</body>
+</html>

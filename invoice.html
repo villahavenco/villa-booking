@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking Diterima — Villa Haven</title>
+<link rel="icon" href="logo.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap">
+    <img src="logo.svg" alt="Villa Haven" class="logo">
+    <h1>Villa Haven</h1>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="invoice-header">
+    <div class="check">✓</div>
+    <h2>Booking Anda Diterima</h2>
+    <p style="color:var(--teks-lembut); margin-top:8px;">Simpan nomor booking ini sebagai referensi.</p>
+  </div>
+
+  <div class="invoice-box" id="isiInvoice">
+    <div class="invoice-no" id="noBooking">—</div>
+    <div class="row"><span>Nama</span><span id="dNama">—</span></div>
+    <div class="row"><span>WhatsApp</span><span id="dWa">—</span></div>
+    <div class="row"><span>Villa</span><span id="dVilla">—</span></div>
+    <div class="row"><span>Check-in</span><span id="dCheckin">—</span></div>
+    <div class="row"><span>Check-out</span><span id="dCheckout">—</span></div>
+    <div class="row"><span>Jumlah Tamu</span><span id="dTamu">—</span></div>
+    <div class="row" id="rowCatatan"><span>Catatan</span><span id="dCatatan">—</span></div>
+
+    <div class="pay-box">
+      <div class="label">Transfer DP 50% ke rekening</div>
+      <div class="value" id="payBank">—</div>
+      <div class="value" id="payNorek">—</div>
+      <div class="label" style="margin-top:4px;" id="payAn">—</div>
+    </div>
+
+    <p style="font-size:13px; color:var(--teks-lembut); margin-top:16px;">
+      Admin akan menghubungi Anda untuk konfirmasi ketersediaan dan total harga final.
+      Setelah transfer, klik tombol di bawah untuk kirim bukti pembayaran ke admin.
+    </p>
+
+    <div class="actions">
+      <a href="#" class="btn" id="btnKonfirmasi">✓ Konfirmasi Sudah Bayar</a>
+      <a href="index.html" class="btn btn-outline">Booking Lagi</a>
+    </div>
+  </div>
+</main>
+
+<footer class="footer wrap">
+  <p>&copy; <span id="tahun"></span> Villa Haven</p>
+</footer>
+
+<script src="config.js"></script>
+<script>
+  document.getElementById('tahun').textContent = new Date().getFullYear();
+
+  const params = new URLSearchParams(window.location.search);
+
+  function ambil(key) { return params.get(key) || '-'; }
+
+  document.getElementById('noBooking').textContent = ambil('noBooking');
+  document.getElementById('dNama').textContent = ambil('nama');
+  document.getElementById('dWa').textContent = ambil('wa');
+  document.getElementById('dVilla').textContent = ambil('villa');
+  document.getElementById('dCheckin').textContent = formatTanggal(ambil('checkin'));
+  document.getElementById('dCheckout').textContent = formatTanggal(ambil('checkout'));
+  document.getElementById('dTamu').textContent = ambil('tamu');
+
+  const catatan = params.get('catatan');
+  if (!catatan) {
+    document.getElementById('rowCatatan').style.display = 'none';
+  } else {
+    document.getElementById('dCatatan').textContent = catatan;
+  }
+
+  document.getElementById('payBank').textContent = CONFIG.namaBank + ' — ' + CONFIG.nomorRekening;
+  document.getElementById('payNorek').textContent = '';
+  document.getElementById('payAn').textContent = 'a.n. ' + CONFIG.atasNamaRekening;
+
+  // Kalau tidak ada data booking sama sekali (akses langsung tanpa isi form), arahkan balik
+  if (!params.get('noBooking')) {
+    window.location.href = 'index.html';
+  }
+
+  // Tombol konfirmasi sudah bayar -> buka WhatsApp admin
+  const pesanWa =
+    'Halo Villa Haven, saya sudah transfer DP untuk booking:\n' +
+    'No. Booking: ' + ambil('noBooking') + '\n' +
+    'Nama: ' + ambil('nama') + '\n' +
+    'Villa: ' + ambil('villa') + '\n' +
+    'Check-in: ' + formatTanggal(ambil('checkin')) + '\n' +
+    'Check-out: ' + formatTanggal(ambil('checkout')) + '\n' +
+    'Mohon dikonfirmasi. Terima kasih.';
+
+  document.getElementById('btnKonfirmasi').href =
+    'https://wa.me/' + CONFIG.nomorWhatsApp + '?text=' + encodeURIComponent(pesanWa);
+
+  function formatTanggal(iso) {
+    if (!iso || iso === '-') return '-';
+    const d = new Date(iso + 'T00:00:00');
+    if (isNaN(d)) return iso;
+    const bulan = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+    return d.getDate() + ' ' + bulan[d.getMonth()] + ' ' + d.getFullYear();
+  }
+</script>
+
+</body>
+</html>

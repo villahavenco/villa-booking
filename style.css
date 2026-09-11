@@ -1,0 +1,306 @@
+/* ============================================================
+   VILLA HAVEN — Gaya Situs
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --hijau-tua: #1c3a33;
+  --hijau-tua-2: #274d43;
+  --pasir: #f4efe4;
+  --pasir-gelap: #e8e0cf;
+  --emas: #b6862c;
+  --emas-terang: #cf9f42;
+  --teks: #211f1a;
+  --teks-lembut: #5c584e;
+  --putih: #ffffff;
+  --garis: #d8d0bd;
+  --radius: 4px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--pasir);
+  color: var(--teks);
+  font-family: 'Inter', -apple-system, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 500;
+  margin: 0;
+  color: var(--hijau-tua);
+}
+
+a { color: inherit; }
+
+.wrap {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- HEADER ---------- */
+.header {
+  background: var(--hijau-tua);
+  padding: 48px 0 40px;
+  text-align: center;
+}
+
+.header img.logo {
+  width: 88px;
+  height: 88px;
+  display: block;
+  margin: 0 auto 18px;
+}
+
+.header h1 {
+  color: var(--putih);
+  font-size: 30px;
+  letter-spacing: 0.3px;
+}
+
+.header p {
+  color: var(--pasir-gelap);
+  font-size: 15px;
+  margin-top: 8px;
+}
+
+/* ---------- CARD FORM ---------- */
+.card {
+  background: var(--putih);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  margin-top: -28px;
+  box-shadow: 0 8px 30px rgba(28, 58, 51, 0.12);
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--hijau-tua);
+  margin-bottom: 6px;
+}
+
+.field .hint {
+  font-size: 12px;
+  color: var(--teks-lembut);
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--garis);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--teks);
+  background: var(--pasir);
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--emas);
+  background: var(--putih);
+}
+
+.field-row {
+  display: flex;
+  gap: 14px;
+}
+
+.field-row .field {
+  flex: 1;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background: var(--emas);
+  color: var(--putih);
+  border: none;
+  border-radius: var(--radius);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn:hover { background: var(--emas-terang); }
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--hijau-tua);
+  color: var(--hijau-tua);
+}
+
+.btn-outline:hover { background: var(--hijau-tua); color: var(--putih); }
+
+.error-msg {
+  font-size: 13px;
+  color: #a3402d;
+  margin-top: 6px;
+  display: none;
+}
+
+/* ---------- KONTAK MENGAMBANG ---------- */
+.wa-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: var(--hijau-tua);
+  color: var(--putih);
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  text-decoration: none;
+  font-size: 24px;
+}
+
+/* ---------- INVOICE ---------- */
+.invoice-header {
+  text-align: center;
+  padding: 40px 0 10px;
+}
+
+.invoice-header .check {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--emas);
+  color: var(--putih);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 26px;
+}
+
+.invoice-box {
+  background: var(--putih);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-top: 20px;
+  box-shadow: 0 8px 30px rgba(28,58,51,0.1);
+}
+
+.invoice-no {
+  text-align: center;
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  color: var(--hijau-tua);
+  padding-bottom: 18px;
+  border-bottom: 1px dashed var(--garis);
+  margin-bottom: 18px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 9px 0;
+  font-size: 14.5px;
+  border-bottom: 1px solid #f1ede2;
+}
+
+.row span:first-child { color: var(--teks-lembut); }
+.row span:last-child { font-weight: 500; text-align: right; }
+
+.pay-box {
+  background: var(--pasir);
+  border: 1px solid var(--garis);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-top: 22px;
+}
+
+.pay-box .label {
+  font-size: 12px;
+  color: var(--teks-lembut);
+  text-transform: none;
+}
+
+.pay-box .value {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--hijau-tua);
+  margin-top: 2px;
+}
+
+.actions {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+  text-align: center;
+  padding: 36px 20px 44px;
+  color: var(--teks-lembut);
+  font-size: 13px;
+}
+
+.footer .links {
+  margin-bottom: 12px;
+}
+
+.footer .links a {
+  color: var(--hijau-tua);
+  text-decoration: none;
+  font-weight: 600;
+  margin: 0 8px;
+}
+
+.kebijakan {
+  display: none;
+  text-align: left;
+  max-width: 480px;
+  margin: 14px auto 0;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--teks-lembut);
+  background: var(--putih);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  border: 1px solid var(--garis);
+}
+
+.kebijakan.aktif { display: block; }
+
+.kebijakan h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--hijau-tua);
+  margin: 0 0 6px;
+}
+
+@media (max-width: 420px) {
+  .field-row { flex-direction: column; gap: 0; }
+  .header { padding: 38px 0 34px; }
+}
