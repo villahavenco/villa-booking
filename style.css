@@ -2,19 +2,19 @@
    VILLA HAVEN — Gaya Situs
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prata&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap');
 
 :root {
   --hijau-tua: #37543e;
   --hijau-tua-2: #446852;
-  --pasir: #fffdf3;
+  --pasir: #f7f0dd;
   --pasir-gelap: #ece4cd;
   --emas: #b8965a;
   --emas-terang: #cdad76;
   --teks: #2a2a24;
   --teks-lembut: #6b6455;
   --putih: #ffffff;
-  --garis: #e2d8bd;
+  --garis: #d4c7a0;
   --radius: 4px;
 }
 
@@ -61,7 +61,8 @@ a { color: inherit; }
 .header h1 {
   color: var(--putih);
   font-size: 30px;
-  letter-spacing: 0.3px;
+  font-family: 'Prata', serif;
+  letter-spacing: 1px;
 }
 
 .header p {
@@ -75,7 +76,7 @@ a { color: inherit; }
   background: var(--putih);
   border-radius: var(--radius);
   padding: 32px 28px;
-  margin-top: -28px;
+  margin-top: 24px;
   box-shadow: 0 8px 30px rgba(28, 58, 51, 0.12);
 }
 
@@ -373,6 +374,8 @@ textarea {
 
 .bio-main h1 {
   font-size: 26px;
+  font-family: 'Prata', serif;
+  letter-spacing: 1px;
 }
 
 .bio-main .tagline {
