@@ -2,7 +2,7 @@
    VILLA HAVEN — Gaya Situs
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prata&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap');
 
 :root {
   --hijau-tua: #37543e;
@@ -61,7 +61,8 @@ a { color: inherit; }
 .header h1 {
   color: var(--putih);
   font-size: 30px;
-  letter-spacing: 0.3px;
+  font-family: 'Prata', serif;
+  letter-spacing: 1px;
 }
 
 .header p {
@@ -373,6 +374,8 @@ textarea {
 
 .bio-main h1 {
   font-size: 26px;
+  font-family: 'Prata', serif;
+  letter-spacing: 1px;
 }
 
 .bio-main .tagline {
