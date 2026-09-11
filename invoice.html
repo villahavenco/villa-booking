@@ -52,14 +52,11 @@
   </div>
 </main>
 
-<footer class="footer wrap">
-  <p>&copy; <span id="tahun"></span> Villa Haven</p>
-</footer>
+<div id="global-footer"></div>
 
 <script src="config.js"></script>
+<script src="footer.js"></script>
 <script>
-  document.getElementById('tahun').textContent = new Date().getFullYear();
-
   const params = new URLSearchParams(window.location.search);
 
   function ambil(key) { return params.get(key) || '-'; }

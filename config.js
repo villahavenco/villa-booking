@@ -27,6 +27,9 @@ const CONFIG = {
   atasNamaRekening: "villahaven.co",
   nomorRekening: "123456789",
 
+  // ---------- INSTAGRAM ----------
+  instagramUsername: "villlahaven.co",
+
   // ---------- TELEGRAM (OPSIONAL) ----------
   // Kosongkan ("") kalau belum punya. Isi nanti kalau sudah siap,
   // notifikasi Telegram akan otomatis aktif tanpa perlu ubah kode lain.

@@ -64,44 +64,16 @@
   </form>
 </main>
 
-<footer class="footer wrap">
-  <div class="links">
-    <a href="#" id="linkPrivasi">Kebijakan Privasi</a>
-    <a href="#" id="linkSyarat">Syarat &amp; Ketentuan</a>
-  </div>
-  <p>&copy; <span id="tahun"></span> Villa Haven</p>
-
-  <div class="kebijakan" id="boxPrivasi">
-    <h4>Kebijakan Privasi</h4>
-    <p>Data yang Anda isi pada formulir ini (nama, nomor WhatsApp, dan detail booking) digunakan semata-mata untuk memproses permintaan sewa villa Anda dan menghubungi Anda terkait status booking. Kami tidak membagikan data Anda kepada pihak lain di luar keperluan proses booking dan koordinasi dengan pengelola villa terkait.</p>
-  </div>
-
-  <div class="kebijakan" id="boxSyarat">
-    <h4>Syarat &amp; Ketentuan</h4>
-    <p>Villa Haven bertindak sebagai perantara yang menghubungkan tamu dengan pemilik/pengelola villa. Booking dianggap sah setelah pembayaran DP diterima dan dikonfirmasi oleh admin. Kebijakan pembatalan, reschedule, dan refund mengikuti ketentuan yang diinformasikan admin saat konfirmasi booking. Harga dan ketersediaan villa dapat berubah sewaktu-waktu sebelum pembayaran DP dikonfirmasi.</p>
-  </div>
-</footer>
+<div id="global-footer"></div>
 
 <a href="#" class="wa-float" id="waFloat" title="Chat Admin">💬</a>
 
 <script src="config.js"></script>
+<script src="footer.js"></script>
 <script>
-  document.getElementById('tahun').textContent = new Date().getFullYear();
-
   // Tombol chat admin mengambang
   document.getElementById('waFloat').href =
     'https://wa.me/' + CONFIG.nomorWhatsApp + '?text=' + encodeURIComponent('Halo Villa Haven, saya mau tanya-tanya dulu.');
-
-  // Toggle kebijakan privasi / syarat ketentuan
-  function toggleBox(linkId, boxId, other) {
-    document.getElementById(linkId).addEventListener('click', function (e) {
-      e.preventDefault();
-      document.getElementById(other).classList.remove('aktif');
-      document.getElementById(boxId).classList.toggle('aktif');
-    });
-  }
-  toggleBox('linkPrivasi', 'boxPrivasi', 'boxSyarat');
-  toggleBox('linkSyarat', 'boxSyarat', 'boxPrivasi');
 
   // Validasi & submit form
   const form = document.getElementById('formBooking');
