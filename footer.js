@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!footerContainer) return;
 
   footerContainer.innerHTML = `
-    <img class="footer-logo" src="logo.svg" alt="${CONFIG.namaSitus}">
+    <img class="footer-logo" src="logo.png" alt="${CONFIG.namaSitus}">
     <div class="footer-tagline">Sewa villa terpercaya di seluruh Indonesia</div>
 
     <div class="footer-ig">
