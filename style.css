@@ -429,6 +429,16 @@ textarea {
   font-size: 14.5px;
   font-weight: 600;
   color: var(--hijau-tua);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bio-icon {
+  width: 17px;
+  height: 17px;
+  color: var(--emas);
+  flex-shrink: 0;
 }
 
 .bio-link .s {
