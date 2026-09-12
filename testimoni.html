@@ -1,16 +1,20 @@
 <!--
   ============================================================
-  CARA EDIT TESTIMONI
+  CARA MENAMBAHKAN TESTIMONI (screenshot chat WA, dll)
   ============================================================
-  Cari blok <div class="testi-card">...</div> di bawah.
-  Satu blok = satu testimoni. Ganti teks di dalamnya:
-  - Nama tamu
-  - Nama villa yang disewa
-  - Isi ulasan
+  1. Simpan gambar screenshot Anda dengan nama:
+     testi-1.jpg, testi-2.jpg, testi-3.jpg, dst.
+     (boleh .jpg atau .png, sesuaikan penulisan di bawah)
 
-  Mau tambah testimoni baru? Copy salah satu blok
-  <div class="testi-card">...</div>, tempel di bawahnya,
-  lalu ganti isinya.
+  2. Upload gambar-gambar itu ke repo GitHub yang sama
+     (sejajar dengan file index.html, style.css, dll).
+
+  3. Tambahkan satu baris di dalam array "gambarTestimoni"
+     di bagian <script> paling bawah file ini, untuk setiap
+     gambar baru. Urutan di array = urutan tampil di halaman.
+
+  4. Jika mau ditampilkan di halaman bio, buka bio.html dan
+     tambahkan kembali tombol menuju testimoni.html.
   ============================================================
 -->
 <!DOCTYPE html>
@@ -26,23 +30,10 @@
 
 <main class="policy-main">
   <h2>Kata Tamu Kami</h2>
-  <p>Berikut sebagian ulasan dari tamu yang sudah booking villa melalui Villa Haven.</p>
+  <p>Bukti percakapan dan ulasan asli dari tamu yang sudah booking villa melalui Villa Haven.</p>
 
-  <div style="margin-top:24px;">
-
-    <div class="testi-card">
-      <div class="nama">Nama Tamu</div>
-      <div class="villa">Menginap di: Nama Villa</div>
-      <div class="ulasan">"Contoh ulasan tamu — ganti dengan testimoni asli dari tamu Anda di sini."</div>
-    </div>
-
-    <div class="testi-card">
-      <div class="nama">Nama Tamu</div>
-      <div class="villa">Menginap di: Nama Villa</div>
-      <div class="ulasan">"Contoh ulasan tamu — ganti dengan testimoni asli dari tamu Anda di sini."</div>
-    </div>
-
-  </div>
+  <div class="testi-gallery" id="testiGallery"></div>
+  <p class="testi-empty" id="testiEmpty">Belum ada testimoni ditambahkan.</p>
 
   <a href="bio.html" class="policy-back">← Kembali</a>
 </main>
@@ -50,5 +41,27 @@
 <div id="global-footer"></div>
 <script src="config.js"></script>
 <script src="footer.js"></script>
+<script>
+  // Tambahkan nama file gambar testimoni di sini, satu per baris:
+  const gambarTestimoni = [
+    // "testi-1.jpg",
+    // "testi-2.jpg",
+  ];
+
+  const gallery = document.getElementById('testiGallery');
+  const empty = document.getElementById('testiEmpty');
+
+  if (gambarTestimoni.length > 0) {
+    empty.style.display = 'none';
+    gambarTestimoni.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'Testimoni tamu Villa Haven';
+      img.className = 'testi-img';
+      gallery.appendChild(img);
+    });
+  }
+</script>
+
 </body>
 </html>
